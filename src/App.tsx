@@ -100,56 +100,60 @@ function App() {
                 <label>
                   Title:
                   <input
+                    className="post-input"
                     type="text"
                     name="title"
                     value={editedPost?.title || ""}
                     onChange={(e) => handleInputChange(e, "title")}
                   />
                 </label>
-                <br />
                 <label>
                   Body:
                   <textarea
+                    className="post-input"
                     name="body"
                     value={editedPost?.body || ""}
                     onChange={(e) => handleInputChange(e, "body")}
                   />
                 </label>
-                <br />
-                <button
-                  className="post-btn post-btn-active"
-                  type="button"
-                  onClick={handleSaveEdit}
-                >
-                  <img className="post-icon" src={checkedIcon} />
-                </button>
-                <button
-                  className="post-btn"
-                  type="button"
-                  onClick={() => {
-                    setEditPostId(null);
-                    setEditedPost(null);
-                  }}
-                >
-                  <img className="post-icon" src={cancelIcon} />
-                </button>
+                <div className="post-btn-wrapper">
+                  <button
+                    className="post-btn"
+                    type="button"
+                    onClick={handleSaveEdit}
+                  >
+                    <img className="post-icon" src={checkedIcon} />
+                  </button>
+                  <button
+                    className="post-btn"
+                    type="button"
+                    onClick={() => {
+                      setEditPostId(null);
+                      setEditedPost(null);
+                    }}
+                  >
+                    <img className="post-icon" src={cancelIcon} />
+                  </button>
+                </div>
               </form>
             ) : (
               <div>
                 <h3 className="post-title">{post.title}</h3>
                 <p className="post-body">{post.body}</p>
-                <button
-                  className="post-btn"
-                  onClick={() => editHandler(post.id)}
-                >
-                  <img className="post-icon" src={editIcon} />
-                </button>
-                <button
-                  className="post-btn"
-                  onClick={() => handleDelete(post.id)}
-                >
-                  <img className="post-icon" src={deleteIcon} />
-                </button>
+                <div className="post-btn-wrapper">
+                  <button
+                    className="post-btn"
+                    onClick={() => editHandler(post.id)}
+                  >
+                    <img className="post-icon" src={editIcon} />
+                  </button>
+                  <button
+                    className="post-btn"
+                    onClick={() => handleDelete(post.id)}
+                  >
+                    <img className="post-icon" src={deleteIcon} />
+                  </button>
+                </div>
               </div>
             )}
           </div>
