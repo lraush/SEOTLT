@@ -93,7 +93,7 @@ function App() {
         {posts.map((post) => (
           <div className="post-container" key={post.id}>
             {editPostId === post.id ? (
-              <form>
+              <form className="form">
                 <label>
                   Title:
                   <input
