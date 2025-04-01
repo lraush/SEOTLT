@@ -58,7 +58,6 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-  border-radius: 50%;
   transition: background-color 0.2s ease;
   margin-right: 10px;
 }

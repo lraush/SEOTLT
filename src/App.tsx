@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import editIcon from "./assets/edit.png";
+import deleteIcon from "./assets/delete.png";
+import checkedIcon from "./assets/checked.png";
+import cancelIcon from "./assets/cancel.png";
 
 interface Post {
   id: number;
@@ -26,7 +30,6 @@ function App() {
   // Функция для загрузки постов из API
 
   function loadPostsFromAPI() {
-    console.log("WORK STEP 2");
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
       const fetchedPosts = response.data as Post[];
 
@@ -35,31 +38,9 @@ function App() {
     });
   }
 
-  // const loadPostsFromAPI = async () => {
-  //   console.log("WORK STEP 2");
-  //   try {
-  //     const response = await axios.get(
-  //       "https://jsonplaceholder.typicode.com/posts"
-  //     );
-  //     const data = response.data as Post[];
-  //     console.log("data: ", data);
-  //     localStorage.setItem("posts", JSON.stringify(data));
-  //     setPosts(data);
-  //   } catch (error) {
-  //     console.error("Ошибка загрузки:", error);
-  //     // Можно показать toast-уведомление
-  //   }
-  // };
-
-  // useEffect с проверкой на наличие данных в localStorage
   useEffect(() => {
-    console.log("WORK");
-    // if (posts.length > 0) {
-    console.log("WORK2");
     loadPostsFromLocalStorage();
-    // } else {
-    //   console.log("WORK3");
-    //   loadPostsFromAPI();
+
     // }
   }, []);
 
@@ -136,11 +117,11 @@ function App() {
                 </label>
                 <br />
                 <button
-                  className="post-btn"
+                  className="post-btn post-btn-active"
                   type="button"
                   onClick={handleSaveEdit}
                 >
-                  <img className="post-icon" src="../public/checked.png" />
+                  <img className="post-icon" src={checkedIcon} />
                 </button>
                 <button
                   className="post-btn"
@@ -150,7 +131,7 @@ function App() {
                     setEditedPost(null);
                   }}
                 >
-                  <img className="post-icon" src="../public/cancel.png" />
+                  <img className="post-icon" src={cancelIcon} />
                 </button>
               </form>
             ) : (
@@ -161,13 +142,13 @@ function App() {
                   className="post-btn"
                   onClick={() => editHandler(post.id)}
                 >
-                  <img className="post-icon" src="../public/edit.png" />
+                  <img className="post-icon" src={editIcon} />
                 </button>
                 <button
                   className="post-btn"
                   onClick={() => handleDelete(post.id)}
                 >
-                  <img className="post-icon" src="../public/delete.png" />
+                  <img className="post-icon" src={deleteIcon} />
                 </button>
               </div>
             )}
