@@ -12,7 +12,6 @@
   gap: 10px;
   justify-content: center;
   padding: 20px;
-
 }
 
 .title {
@@ -22,12 +21,31 @@
   text-align: center;
 }
 
+.post-add {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  height: 35px;
+  width: 170px;
+}
+.post-btn-add {
+  position: absolute;
+  right: 0px;
+  top: 15px;
+  border: none;
+  background-color: none;
+  width: 10px;
+}
+.post-btn-add:first-child{
+  right: 30px;
+}
 .post-container {
   background-color: white;
   width: 390px;
   border-radius: 8px;
   padding: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   box-shadow: 0 1px 3px rgba(98, 96, 96, 0.1);
   position: relative;
   transition: transform 0.2s ease;
@@ -56,6 +74,7 @@
 }
 .form {
   margin-top: 10px;
+  position: relative;
 }
 .post-input {
   background-color: rgb(232, 232, 232);
@@ -69,14 +88,14 @@
 .post-btn-intro {
   position: absolute;
   right: 25px;
-  bottom: 10px;
+  bottom: 0px;
   background: none;
   border: none;
   width: 10px;
 }
 .post-btn-intro:first-child {
   right: 60px;
-  bottom: 10px;
+  bottom: 0px;
   width: 10px;
 }
 .post-btn-external {
