@@ -1,29 +1,151 @@
 #root {
   max-width: 1280px;
-  background-color: #888;
   margin: 0 auto;
+  background-color: #f5f5f5;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  /* border-radius: 12px; */
+  padding: 20px;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.title {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
   text-align: center;
 }
 
-/* @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.post-container {
+  background-color: white;
+  width: 400px;
+
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.post-container:hover {
+  transform: translateY(-2px);
+}
+
+.post-title {
+  color: #3498db;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.post-body {
+  color: #555;
+  line-height: 1.6;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.post-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  margin-right: 10px;
+}
+
+.post-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.post-icon {
+  width: 20px;
+  height: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .post-container {
+    padding: 15px;
   }
-} */
+}
 
 @media (max-width: 450px) {
   .container {
-    background-color: #888;
+    padding: 10px;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .title {
+    font-size: 1.8rem;
+  }
 
-.read-the-docs {
-  color: #888;
+  .post-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .post-title {
+    font-size: 1.2rem;
+    padding-right: 50px;
+  }
+
+  .post-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    margin-right: 0;
+  }
+
+  .post-btn:nth-child(3) {
+    top: 50px;
+  }
+
+  .post-icon {
+    width: 16px;
+    height: 16px;
+  }
 }

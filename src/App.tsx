@@ -109,62 +109,72 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <>
       <h1 className="title">Новости</h1>
-      {posts.map((post) => (
-        <div key={post.id}>
-          {editPostId === post.id ? (
-            <form>
-              <label>
-                Title:
-                <input
-                  type="text"
-                  name="title"
-                  value={editedPost?.title || ""}
-                  onChange={(e) => handleInputChange(e, "title")}
-                />
-              </label>
-              <br />
-              <label>
-                Body:
-                <textarea
-                  name="body"
-                  value={editedPost?.body || ""}
-                  onChange={(e) => handleInputChange(e, "body")}
-                />
-              </label>
-              <br />
-              <button type="button" onClick={handleSaveEdit}>
-                Save
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setEditPostId(null);
-                  setEditedPost(null);
-                }}
-              >
-                Cancel
-              </button>
-            </form>
-          ) : (
-            <div>
-              <h3 className="post-title">{post.title}</h3>
-              <p className="post-body">{post.body}</p>
-              <button className="post-btn" onClick={() => editHandler(post.id)}>
-                Edit
-              </button>
-              <button
-                className="post-btn"
-                onClick={() => handleDelete(post.id)}
-              >
-                Delete
-              </button>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+      <div className="container">
+        {posts.map((post) => (
+          <div className="post-container" key={post.id}>
+            {editPostId === post.id ? (
+              <form>
+                <label>
+                  Title:
+                  <input
+                    type="text"
+                    name="title"
+                    value={editedPost?.title || ""}
+                    onChange={(e) => handleInputChange(e, "title")}
+                  />
+                </label>
+                <br />
+                <label>
+                  Body:
+                  <textarea
+                    name="body"
+                    value={editedPost?.body || ""}
+                    onChange={(e) => handleInputChange(e, "body")}
+                  />
+                </label>
+                <br />
+                <button
+                  className="post-btn"
+                  type="button"
+                  onClick={handleSaveEdit}
+                >
+                  <img className="post-icon" src="../public/checked.png" />
+                </button>
+                <button
+                  className="post-btn"
+                  type="button"
+                  onClick={() => {
+                    setEditPostId(null);
+                    setEditedPost(null);
+                  }}
+                >
+                  <img className="post-icon" src="../public/cancel.png" />
+                </button>
+              </form>
+            ) : (
+              <div>
+                <h3 className="post-title">{post.title}</h3>
+                <p className="post-body">{post.body}</p>
+                <button
+                  className="post-btn"
+                  onClick={() => editHandler(post.id)}
+                >
+                  <img className="post-icon" src="../public/edit.png" />
+                </button>
+                <button
+                  className="post-btn"
+                  onClick={() => handleDelete(post.id)}
+                >
+                  <img className="post-icon" src="../public/delete.png" />
+                </button>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
