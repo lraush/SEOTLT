@@ -140,15 +140,15 @@ function App() {
               <div>
                 <h3 className="post-title">{post.title}</h3>
                 <p className="post-body">{post.body}</p>
-                <div className="post-btn-wrapper">
+                <div className="post-btn-wrapper ">
                   <button
-                    className="post-btn"
+                    className="post-btn post-btn-external"
                     onClick={() => editHandler(post.id)}
                   >
                     <img className="post-icon" src={editIcon} />
                   </button>
                   <button
-                    className="post-btn"
+                    className="post-btn post-btn-external"
                     onClick={() => handleDelete(post.id)}
                   >
                     <img className="post-icon" src={deleteIcon} />
