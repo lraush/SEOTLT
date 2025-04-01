@@ -28,20 +28,17 @@ function App() {
   };
 
   // Функция для загрузки постов из API
-
   function loadPostsFromAPI() {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
       const fetchedPosts = response.data as Post[];
 
       localStorage.setItem("posts", JSON.stringify(fetchedPosts)); // Сохраняем данные в localStorage
-      setPosts(fetchedPosts); // Устанавливаем данные в состояние
+      setPosts(fetchedPosts); 
     });
   }
 
   useEffect(() => {
     loadPostsFromLocalStorage();
-
-    // }
   }, []);
 
   const handleInputChange = (
