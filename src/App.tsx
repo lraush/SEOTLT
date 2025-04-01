@@ -10,34 +10,57 @@ interface Post {
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [editPostId, setEditPostId] = useState<number | null>(null); 
-  const [editedPost, setEditedPost] = useState<Post | null>(null); 
+  const [editPostId, setEditPostId] = useState<number | null>(null);
+  const [editedPost, setEditedPost] = useState<Post | null>(null);
 
   // Загрузка постов из localStorage
   const loadPostsFromLocalStorage = () => {
     const savedPosts = localStorage.getItem("posts");
-
-    if (savedPosts) {
-      setPosts(JSON.parse(savedPosts)); 
+    if (savedPosts && JSON.parse(savedPosts).length > 0) {
+      setPosts(JSON.parse(savedPosts));
     } else {
-      console.log("No posts found in localStorag");
-      loadPostsFromAPI(); 
+      loadPostsFromAPI();
     }
   };
 
   // Функция для загрузки постов из API
-  const loadPostsFromAPI = () => {
+
+  function loadPostsFromAPI() {
+    console.log("WORK STEP 2");
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
       const fetchedPosts = response.data as Post[];
 
       localStorage.setItem("posts", JSON.stringify(fetchedPosts)); // Сохраняем данные в localStorage
       setPosts(fetchedPosts); // Устанавливаем данные в состояние
     });
-  };
+  }
+
+  // const loadPostsFromAPI = async () => {
+  //   console.log("WORK STEP 2");
+  //   try {
+  //     const response = await axios.get(
+  //       "https://jsonplaceholder.typicode.com/posts"
+  //     );
+  //     const data = response.data as Post[];
+  //     console.log("data: ", data);
+  //     localStorage.setItem("posts", JSON.stringify(data));
+  //     setPosts(data);
+  //   } catch (error) {
+  //     console.error("Ошибка загрузки:", error);
+  //     // Можно показать toast-уведомление
+  //   }
+  // };
 
   // useEffect с проверкой на наличие данных в localStorage
   useEffect(() => {
+    console.log("WORK");
+    // if (posts.length > 0) {
+    console.log("WORK2");
     loadPostsFromLocalStorage();
+    // } else {
+    //   console.log("WORK3");
+    //   loadPostsFromAPI();
+    // }
   }, []);
 
   const handleInputChange = (
@@ -52,7 +75,6 @@ function App() {
     }
   };
 
- 
   const handleSaveEdit = () => {
     if (editedPost) {
       const updatedPosts = posts.map((post) =>
@@ -77,7 +99,6 @@ function App() {
       setEditedPost(postToEdit); // Загружаем данные в форму
     }
   };
-
 
   const handleDelete = (postId: number) => {
     const updatedPosts = posts.filter((post) => post.id !== postId);
