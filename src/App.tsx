@@ -33,7 +33,7 @@ function App() {
       const fetchedPosts = response.data as Post[];
 
       localStorage.setItem("posts", JSON.stringify(fetchedPosts)); // Сохраняем данные в localStorage
-      setPosts(fetchedPosts); 
+      setPosts(fetchedPosts);
     });
   }
 
@@ -115,14 +115,14 @@ function App() {
                 </label>
                 <div className="post-btn-wrapper">
                   <button
-                    className="post-btn"
+                    className="post-btn-intro"
                     type="button"
                     onClick={handleSaveEdit}
                   >
                     <img className="post-icon" src={checkedIcon} />
                   </button>
                   <button
-                    className="post-btn"
+                    className="post-btn-intro"
                     type="button"
                     onClick={() => {
                       setEditPostId(null);
@@ -139,13 +139,13 @@ function App() {
                 <p className="post-body">{post.body}</p>
                 <div className="post-btn-wrapper ">
                   <button
-                    className="post-btn post-btn-external"
+                    className="post-btn-external"
                     onClick={() => editHandler(post.id)}
                   >
                     <img className="post-icon" src={editIcon} />
                   </button>
                   <button
-                    className="post-btn post-btn-external"
+                    className="post-btn-external"
                     onClick={() => handleDelete(post.id)}
                   >
                     <img className="post-icon" src={deleteIcon} />
