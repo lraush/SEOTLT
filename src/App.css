@@ -35,10 +35,11 @@
   top: 15px;
   border: none;
   background-color: none;
-  width: 10px;
+  width: 0;
+  height: 0;
 }
-.post-btn-add:first-child{
-  right: 30px;
+.post-btn-add:first-child {
+  right: 40px;
 }
 .post-container {
   background-color: white;
